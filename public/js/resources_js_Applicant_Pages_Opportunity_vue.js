@@ -12,11 +12,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['opp', 'slug'],
+  props: ['opp', 'slug', 'applicant'],
   data: function data() {
-    return {};
+    return {
+      userOpp: []
+    };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.userOpp = JSON.parse(this.opp); //console.log(this.opp[0]+this.opp[1]+this.opp[2])
+  },
   methods: {
     convertTimestamp: function convertTimestamp(ts) {
       ts = ts.split(/[- :]/);
@@ -51,17 +55,138 @@ var _hoisted_3 = {
   "class": "font-bold text-center"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<hr class=\"my-4 border-secondary\"><div class=\"px-4 grid grid-cols-1 lg:grid-cols-2 gap-2\"><div><span class=\"text-lg font-semibold\">Position: </span><!-- &lt;span class=&quot;text-lg&quot;&gt;{{ opp.position }}&lt;/span&gt; &lt;br&gt; --></div><div><span class=\"text-lg font-semibold\">Type: </span><!-- &lt;span class=&quot;text-lg&quot;&gt;{{ opp.type ?? &#39;----&#39; }}&lt;/span&gt; &lt;br&gt; --></div><div><span class=\"text-lg font-semibold\">Description: </span><!-- &lt;div class=&quot;px-5 bold-marker&quot; v-html=&quot;opp.description&quot;&gt;&lt;/div&gt; --></div><div><span class=\"text-lg font-semibold\">Qualifications: </span><!-- &lt;div class=&quot;px-5 bold-marker&quot; v-html=&quot;opp.qualifications&quot;&gt;&lt;/div&gt; --></div><div><div class=\"text-lg font-semibold\">Required Documents:</div><div class=\"px-5\"><!-- &lt;li &gt;{{ $req }}&lt;/li&gt; --></div></div><div><div class=\"text-lg font-semibold\">Optional Documents:</div><div class=\"px-5\"><!-- &lt;li&gt;{{ $opt }}&lt;/li&gt; --></div></div><div class=\"col-span-1 lg:col-span-2 mt-2\"><span class=\"text-lg font-semibold\">Deadline of Submissions: </span><!-- &lt;span class=&quot;text-lg&quot;&gt;{{ date(&quot;D, F d, Y h:i a&quot;, strtotime(opp.submission_deadline)) }}&lt;/span&gt; &lt;br&gt; --></div><div class=\"w-full grid pt-4\"><div class=\"place-self-end\"><!-- &lt;a href=&quot;&quot; class=&quot;btn btn-primary&quot;&gt;Apply&lt;/a&gt; --></div></div></div>", 2);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", {
+  "class": "my-4 border-secondary"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "px-4 grid grid-cols-1 lg:grid-cols-2 gap-2"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Position: ", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "text-lg"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Type: ", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  "class": "text-lg"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Description: ", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = ["innerHTML"];
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Qualifications: ", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = ["innerHTML"];
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-lg font-semibold"
+}, "Required Documents:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "px-5"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li >{{ $req }}</li> ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-lg font-semibold"
+}, "Optional Documents:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "px-5"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>{{ $opt }}</li> ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "col-span-1 lg:col-span-2 mt-2"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Deadline of Submissions: ", -1
+/* HOISTED */
+);
+
+var _hoisted_22 = {
+  "class": "text-lg"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "w-full grid pt-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "place-self-end"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "",
+  "class": "btn btn-primary"
+}, "Apply")])], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _$data$userOpp$type;
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return _ctx.$router.go(-1);
     }),
     "class": "btn"
-  }, "Back to Opportunities")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.opp.title), 1
+  }, "Back to Opportunities")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userOpp.title), 1
   /* TEXT */
-  ), _hoisted_4])]);
+  ), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userOpp.position), 1
+  /* TEXT */
+  ), _hoisted_8, _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_$data$userOpp$type = $data.userOpp.type) !== null && _$data$userOpp$type !== void 0 ? _$data$userOpp$type : '----'), 1
+  /* TEXT */
+  ), _hoisted_12, _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "px-5 bold-marker",
+    innerHTML: $data.userOpp.description
+  }, null, 8
+  /* PROPS */
+  , _hoisted_15)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "px-5 bold-marker",
+    innerHTML: $data.userOpp.qualifications
+  }, null, 8
+  /* PROPS */
+  , _hoisted_17)]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userOpp.submission_deadline), 1
+  /* TEXT */
+  ), _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                        <span class=\"text-lg\">{{ date(\"D, F d, Y h:i a\", strtotime(userOpp.submission_deadline)) }}</span> <br>\n                    ")]), _hoisted_25])])]);
 }
 
 /***/ }),

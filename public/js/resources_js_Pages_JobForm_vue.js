@@ -39,7 +39,7 @@ __webpack_require__.r(__webpack_exports__);
         position: '',
         description: '',
         qualifications: '',
-        type: 0,
+        type: '-----',
         status: 0
       },
       editor: (_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default()),
@@ -382,7 +382,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "form-input border border-gray-300 rounded text-black py-2 px-3 w-full"
   }, [_hoisted_17, _hoisted_18, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.emp_status, function (emp) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-      value: emp.id
+      value: emp.status
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(emp.status), 9
     /* TEXT, PROPS */
     , _hoisted_19);

@@ -175,7 +175,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: 'Opportunity',
         params: {
           slug: opp.slug,
-          opp: opp,
+          opp: JSON.stringify(opp),
           applicant: _this.applicant
         }
       },

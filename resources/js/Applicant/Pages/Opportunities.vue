@@ -38,7 +38,7 @@
                         <div class="text-lg">&emsp;{{ opp.submission_deadline }}</div>
                         <div class="w-full grid pt-4">
                             <div class="place-self-end">
-                                <router-link :to="{ name: 'Opportunity', params: { slug: opp.slug, opp: opp, applicant: this.applicant } }" class="btn btn-primary">Details</router-link>
+                                <router-link :to="{ name: 'Opportunity', params: { slug: opp.slug, opp: JSON.stringify(opp), applicant: this.applicant } }" class="btn btn-primary">Details</router-link>
                             </div>
                         </div>
                     </div>

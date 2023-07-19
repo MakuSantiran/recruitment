@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div class="flex justify-center items-center">
                 <div class="border border-gray-100 bg-white p-10 rounded-lg shadow-md mt-10 w-full">
-                    <h1 class="text-center text-3xl font-extrabold">Opportunity Form</h1>
+                    <h1 class="text-center text-3xl font-extrabold">Opportunity _ Form</h1>
                     <form class="justify-center" @submit.prevent="publish">
                         <div class="grid grid-cols-2 gap-x-4">
                             <div class="col-span-2">
@@ -104,7 +104,7 @@ export default {
                 position: '',
                 description: '',
                 qualifications: '',
-                type: 0,
+                type: '',
                 status: 0
             },
 

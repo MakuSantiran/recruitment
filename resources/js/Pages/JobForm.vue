@@ -13,6 +13,7 @@
                             <div>
                                 <h2 class="text-base font-bold">Position</h2>
                                 <input list="positions" class="form-input border border-gray-300 rounded w-full py-2 px-3" v-model="opportunity.position" placeholder="Ex. Developer" />
+                                
                                 <datalist id="positions">    
                                     <!-- Change!! -->
                                     <option value="Computer Programmer"></option>
@@ -26,7 +27,7 @@
                             <div>
                                 <h2 class="text-base font-bold">Type</h2>
                                 <select v-model="opportunity.type" class="form-input border border-gray-300 rounded text-black py-2 px-3 w-full"> <br><br>
-                                    <option v-for="emp in emp_status" :value="emp.id">{{ emp.status }}</option>
+                                    <option v-for="emp in emp_status" :value="emp.status">{{ emp.status }}</option>
                                 </select>
                             </div>
                             <div class="p-0 m-0">
@@ -104,7 +105,7 @@ export default {
                 position: '',
                 description: '',
                 qualifications: '',
-                type: 0,
+                type: '-----',
                 status: 0
             },
 
