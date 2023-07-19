@@ -109,6 +109,7 @@ export default {
             },
 
             editor: ClassicEditor,
+            
             editorConfig: {
                 toolbar: [ 'bold', 'italic', 'link', '|', 'numberedList', 'bulletedList', '|', 'undo', 'redo' ]
             },
