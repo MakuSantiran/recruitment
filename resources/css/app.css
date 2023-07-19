@@ -1,0 +1,145 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/**----- Headers and Titles -----**/
+@layer base {
+    hr {
+        @apply border-gray-200;
+    }
+    h1 {
+        @apply text-4xl my-3 text-gray-600;
+    }
+    h2 {
+        @apply text-3xl my-3 text-gray-600;
+    }
+    h3 {
+        @apply text-2xl my-2 text-gray-600;
+    }
+    h4 {
+        @apply text-xl my-2 text-gray-600;
+    }
+    h5 {
+        @apply text-lg my-2 text-gray-600;
+    }
+
+    table.bdr th {
+        @apply bg-gray-500 text-white;
+    }
+
+    table.bdr td, table.bdr th{
+        @apply px-3 py-1 border border-gray-200 border-collapse
+    }
+
+    ul {
+        @apply pl-5 list-disc;
+    }
+
+    ol {
+        @apply pl-5 list-decimal;
+    }
+}
+
+/*@media print{*/
+    /*body *{*/
+        /*visibility: hidden;*/
+    /*}*/
+    /*div#printable {*/
+        /*visibility: visible !important;*/
+    /*}*/
+    /*div#printable {*/
+          /*position: relative;*/
+          /*left: 0;*/
+          /*top: 0;*/
+      /*}*/
+/*}*/
+.card {
+    @apply bg-white rounded-md border py-4 px-4 transform duration-300 border-gray-100 shadow hover:bg-blue-50 hover:shadow-md hover:scale-105
+}
+
+.nav-links {
+    @apply text-white font-normal /* px-5 py-3 */ hover:bg-accent3 px-2 py-2 rounded;
+    list-style: none !important;
+}
+
+.tabs {
+    @apply px-5 py-3 text-gray-500 border-b-4 border-gray-200 font-semibold uppercase hover:border-gray-400 hover:bg-gray-50
+}
+
+.tabs.active{
+    @apply border-accent4 !important;
+}
+
+
+.form-input {
+    @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm
+}
+.btn {
+    @apply rounded inline-flex items-center py-2 px-4 uppercase font-semibold tracking-widest transition ease-in-out duration-150
+}
+.btn-sm {
+    @apply py-1 px-2 !important;
+    font-size: 13px !important;
+}
+.btn-xs {
+    @apply py-1 px-2 m-1;
+    font-size: 11px !important;
+
+}
+
+.btn-primary {
+    @apply bg-primary hover:bg-accent3 focus:outline-none focus:border-green-900 text-white
+}
+.btn-warning {
+    @apply bg-yellow-400 hover:bg-yellow-300 focus:outline-none focus:border-yellow-500 text-gray-600
+}
+.btn-danger {
+    @apply bg-red-500 hover:bg-red-400 focus:outline-none focus:border-red-600 text-white
+}
+.btn-default {
+    @apply bg-gray-200 hover:bg-gray-100 text-gray-600
+}
+
+.form-input{
+    @apply border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #edf2f7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+}
+
+
+
+
+#sidebar_links {
+    list-style: none !important;
+}
+
+/* Remove down arrow on datalist */
+input[list="positions"]::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+.router-link-exact-active {
+    @apply font-bold text-gray-200
+}
