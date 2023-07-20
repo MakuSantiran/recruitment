@@ -13,6 +13,7 @@
                     <select name="type" class="form-input">
                         <option value="title" {{ ( request()->input('type') == 'title') ? 'selected' : '' }}>Title</option>
                         <option value="position" {{ ( request()->input('type') == 'position') ? 'selected' : '' }}>Position</option>
+                        <option value="type" {{ ( request()->input('type') == 'type') ? 'selected' : '' }}>Type</option>
                     </select>
                 </span>
                 <span>
@@ -40,6 +41,7 @@
                     <div class="border bg-white p-5 rounded-lg shadow-lg mt-3 mb-6 border-accent">
                         <h2 class="font-semibold">{{ $opp->title }}</h2>
                         <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ $opp->position }}</span> <br>
+                        <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ $opp->type }}</span> <br> <br/>
                         {{-- <span class="text-lg font-semibold">Description: </span><span class="text-lg">{{ $opp->description }}</span> <br>
                         <span class="text-lg font-semibold">Qualifications: </span><span class="text-lg">{{ $opp->qualifications }}</span> <br> --}}
                         

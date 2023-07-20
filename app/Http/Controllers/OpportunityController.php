@@ -9,10 +9,12 @@ use Carbon\Carbon;
 
 class OpportunityController extends Controller
 {
+    /* Authentication thing */
     public function __construct()
     {
         $this->middleware('auth:admin')->except([
-            'getAll'
+            'getAll',
+            'displaySearched'
         ]);
     }
 
@@ -30,6 +32,7 @@ class OpportunityController extends Controller
         $new_opp->title = $request->opportunity['title'];
         $new_opp->slug = Str::slug($request->opportunity['title'].now());
         $new_opp->position = $request->opportunity['position'];
+        $new_opp->type = $request->opportunity['type'];
         $new_opp->description = $request->opportunity['description'];
         $new_opp->qualifications = $request->opportunity['qualifications'];   
 
@@ -61,28 +64,47 @@ class OpportunityController extends Controller
         return $result;
     }
 
+    public function displaySearched(Request $request)
+    {   
+
+        $filter = $request->search['filter'];
+        $sort = $request->search['sort'];
+        $keyword = $request->search['keyword'];
+
+        
+        //$result = Opportunity::where($filter, $keyword)->get();
+        $result =  Opportunity::where($filter, 'like', '%' . $keyword. '%')->get();
+       
+        //print $result;
+        return $result;
+        
+    }
+
     public function update(Request $request)
     {
+        
+        $req = (object) $request->reqs;  
 
         // dd($request->deadline);
         $opp = Opportunity::where("id", $request->opportunity['id'])->update([
             'title'=>$request->opportunity['title'],
             'position'=>$request->opportunity['position'],
+            'type'=>$request->opportunity['type'],
             'description'=>$request->opportunity['description'],
             'qualifications'=>$request->opportunity['qualifications'],
             
             'submission_deadline'=>$request->deadline,
 
-            'cert_employment'=> (int) $request->reqs['cert_employment'],
-            'service_record'=> (int) $request->reqs['service_record'],
-            'transcript_of_records'=> (int) $request->reqs['transcript_of_records'],
-            'diploma'=> (int) $request->reqs['diploma'],
-            'certification_of_units'=> (int) $request->reqs['certification_of_units'],
-            'cs_eligibility'=> (int) $request->reqs['cs_eligibility'],
-            'prc_license'=> (int) $request->reqs['prc_license'],
-            'board_rating'=> (int) $request->reqs['board_rating'],
-            'trainings_seminars_awards'=> (int) $request->reqs['trainings_seminars_awards'],
-            'latest_performance_rating'=> (int) $request->reqs['latest_performance_rating'],
+            'cert_employment'=> (int) $request->reqs['cert_employment']['value'],
+            'service_record'=> (int) $request->reqs['service_record']['value'],
+            'transcript_of_records'=> (int) $request->reqs['transcript_of_records']['value'],
+            'diploma'=> (int) $request->reqs['diploma']['value'],
+            'certification_of_units'=> (int) $request->reqs['certification_of_units']['value'],
+            'cs_eligibility'=> (int) $request->reqs['cs_eligibility']['value'],
+            'prc_license'=> (int) $request->reqs['prc_license']['value'],
+            'board_rating'=> (int) $request->reqs['board_rating']['value'],
+            'trainings_seminars_awards'=> (int) $request->reqs['trainings_seminars_awards']['value'],
+            'latest_performance_rating'=> (int) $request->reqs['latest_performance_rating']['value'],
         ]);
 
         return $opp;

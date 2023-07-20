@@ -11,10 +11,11 @@
 
             <!-- Modal Body -->
             <section class="px-8 py-5">
-                <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ data.position }}</span> <br>
+                <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ data.position }}</span> <br> <br/>
+                <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ data.type }}</span> <br>  <br>
                 <span class="text-lg font-semibold">Description: </span><span class="text-lg" v-html="data.description"></span> <br>
                 <span class="text-lg font-semibold">Qualifications: </span><span class="text-lg" v-html="data.qualifications"></span> <br>
-
+                
                 <div class="text-lg font-semibold">Required Documents:</div>
                     <div class="px-5">
                         <li v-for="req in required">{{ req }}</li>
@@ -58,6 +59,7 @@ export default {
         },
 
         filterDocs(opp){
+
             let reqs = {
                 cert_employment: {
                     name: "Certificate of Employment",
@@ -103,13 +105,16 @@ export default {
 
             this.required = [];
             this.optional = [];
+
             Object.entries(reqs).forEach((item, index)=>{
                 if (item[1].value == 2) {
                     this.required.push(item[1].name);
                 } else if (item[1].value == 1) {
                     this.optional.push(item[1].name);
                 }
+
             });
+            
         }
     },
 }

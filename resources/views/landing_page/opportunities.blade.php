@@ -40,6 +40,7 @@
                     <div class="border bg-white p-5 rounded-lg shadow-lg my-3 border-accent">
                         <h2 class="font-semibold">{{ $opp->title }}</h2>
                         <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ $opp->position }}</span> <br>
+                        <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ $opp->type }}</span> <br> <br/>
 
                         <span class="text-lg font-semibold">Deadline of Submissions: </span>
                         <div class="text-lg">&emsp;{{ date("l M d, Y h:i a", strtotime($opp->submission_deadline)) }}</div>

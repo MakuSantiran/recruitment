@@ -44,11 +44,20 @@ Route::get('/registration', function() {
 
 Route::post('/register', [UserController::class, 'register']); 
 
+// ?????
+Route::post('/getApplicant', [UserController::class, 'getApplicant']);
+
 Route::prefix('my')->group(function () {
 
+    //
     Route::post('/getAll', [OpportunityController::class, 'getAll']);
-    Route::post('/getApplicant', [UserController::class, 'getApplicant']);
+    Route::post('/userSearchOpps', [OpportunityController::class, 'displaySearched']);
     
+    // ????
+    Route::post('/getApplicant', [UserController::class, 'getApplicant']);
+    Route::post('my/getApplicant', [UserController::class, 'getApplicant']);
+    
+
     Route::get('/{vue_route?}', [UserController::class, 'dashboard'])->where('vue_route', '[\/\w\.-]*');
 });
 

@@ -15,18 +15,80 @@ __webpack_require__.r(__webpack_exports__);
   props: ['opp', 'slug', 'applicant'],
   data: function data() {
     return {
-      userOpp: []
+      userOpp: [],
+      required: [],
+      optional: []
     };
   },
   mounted: function mounted() {
-    this.userOpp = JSON.parse(this.opp); //console.log(this.opp[0]+this.opp[1]+this.opp[2])
+    this.userOpp = JSON.parse(this.opp);
+    this.filterDocs(this.opp); //console.log(this.opp[0]+this.opp[1]+this.opp[2])
   },
   methods: {
+    initiateDocReq: function initiateDocReq() {
+      alert('Now Applying the job!');
+    },
     convertTimestamp: function convertTimestamp(ts) {
       ts = ts.split(/[- :]/);
       var d = new Date(ts[0], ts[1] - 1, ts[2], ts[3], ts[4]);
       var time = d.toLocaleTimeString();
       return d.toDateString() + ' ' + time.slice(0, 5) + ' ' + time.slice(-2);
+    },
+    filterDocs: function filterDocs(opp) {
+      var _this = this;
+
+      console.log("Opportunity.vue: Running");
+      var reqs = {
+        cert_employment: {
+          name: "Certificate of Employment",
+          value: this.userOpp.cert_employment
+        },
+        service_record: {
+          name: "Service Record",
+          value: this.userOpp.service_record
+        },
+        transcript_of_records: {
+          name: "Transcript of Record",
+          value: this.userOpp.transcript_of_records
+        },
+        diploma: {
+          name: "Diploma",
+          value: this.userOpp.diploma
+        },
+        certification_of_units: {
+          name: "Certification of Units",
+          value: this.userOpp.certification_of_units
+        },
+        cs_eligibility: {
+          name: "Civil Service Eligibility",
+          value: this.userOpp.cs_eligibility
+        },
+        prc_license: {
+          name: "PRC License",
+          value: this.userOpp.prc_license
+        },
+        board_rating: {
+          name: "Board Rating",
+          value: this.userOpp.board_rating
+        },
+        trainings_seminars_awards: {
+          name: "Trainings, Seminars, and Awards",
+          value: this.userOpp.trainings_seminars_awards
+        },
+        latest_performance_rating: {
+          name: "Latest Performance Rating",
+          value: this.userOpp.latest_performance_rating
+        }
+      };
+      this.required = [];
+      this.optional = [];
+      Object.entries(reqs).forEach(function (item, index) {
+        if (item[1].value == 2) {
+          _this.required.push(item[1].name);
+        } else if (item[1].value == 1) {
+          _this.optional.push(item[1].name);
+        }
+      });
     }
   }
 });
@@ -113,53 +175,51 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_17 = ["innerHTML"];
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "text-lg font-semibold"
-}, "Required Documents:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "px-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li >{{ $req }}</li> ")])], -1
+}, "Required Documents:", -1
 /* HOISTED */
 );
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-lg font-semibold"
-}, "Optional Documents:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_19 = {
   "class": "px-5"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>{{ $opt }}</li> ")])], -1
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "text-lg font-semibold"
+}, "Optional Documents:", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = {
+var _hoisted_21 = {
+  "class": "px-5"
+};
+var _hoisted_22 = {
   "class": "col-span-1 lg:col-span-2 mt-2"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "text-lg font-semibold"
 }, "Deadline of Submissions: ", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = {
+var _hoisted_24 = {
   "class": "text-lg"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_27 = {
   "class": "w-full grid pt-4"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+};
+var _hoisted_28 = {
   "class": "place-self-end"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "",
-  "class": "btn btn-primary"
-}, "Apply")])], -1
-/* HOISTED */
-);
-
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _$data$userOpp$type;
 
@@ -184,9 +244,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     innerHTML: $data.userOpp.qualifications
   }, null, 8
   /* PROPS */
-  , _hoisted_17)]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userOpp.submission_deadline), 1
+  , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.required, function (req) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(req), 1
+    /* TEXT */
+    );
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.optional, function (opt) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opt), 1
+    /* TEXT */
+    );
+  }), 256
+  /* UNKEYED_FRAGMENT */
+  ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.userOpp.submission_deadline), 1
   /* TEXT */
-  ), _hoisted_23, _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                        <span class=\"text-lg\">{{ date(\"D, F d, Y h:i a\", strtotime(userOpp.submission_deadline)) }}</span> <br>\n                    ")]), _hoisted_25])])]);
+  ), _hoisted_25, _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("\n                        <span class=\"text-lg\">{{ date(\"D, F d, Y h:i a\", strtotime(userOpp.submission_deadline)) }}</span> <br>\n                    ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return $options.initiateDocReq && $options.initiateDocReq.apply($options, arguments);
+    }),
+    "class": "btn btn-primary"
+  }, "Apply")])])])])]);
 }
 
 /***/ }),

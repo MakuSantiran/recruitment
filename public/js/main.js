@@ -19759,8 +19759,13 @@ __webpack_require__.r(__webpack_exports__);
     getApplicant: function getApplicant() {
       var _this = this;
 
+      // simple fix but it gives an error
       axios.post('my/getApplicant').then(function (_ref) {
         var data = _ref.data;
+        _this.applicant = data;
+      });
+      axios.post('getApplicant').then(function (_ref2) {
+        var data = _ref2.data;
         _this.applicant = data;
       });
     }

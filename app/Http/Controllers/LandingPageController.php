@@ -18,13 +18,16 @@ class LandingPageController extends Controller
 
     public function searchOpp(Request $request)
     {
+        // yung nasearched
+        $searched = $request->q;
+
         if ($request->order == 'latest') {
             $opportunities = Opportunity::where($request->type, 'LIKE', '%'.$request->q.'%')->latest()->get();
         } else {
             $opportunities = Opportunity::where($request->type, 'LIKE', '%'.$request->q.'%')->oldest()->get();
         }
         
-        return view('landing_page.search', compact('opportunities'));
+        return view('landing_page.search', compact('opportunities', 'searched'));
     }
 
     public function showOpp($slug)

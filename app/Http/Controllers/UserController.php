@@ -81,6 +81,7 @@ class UserController extends Controller
 
     public function getApplicant()
     {
+        
         return DB::table('users')
                     ->where("users.id", Auth::id())
                     ->join('applicant_details', 'users.id', '=', 'applicant_details.user_id')

@@ -25,8 +25,8 @@
                             </div>
                             <div>
                                 <h2 class="text-base font-bold">Type</h2>
-                                <select v-model="type" class="form-input border border-gray-300 rounded text-black py-2 px-3 w-full"> <br><br>
-                                    <option v-for="emp in emp_status" :value="emp.id">{{ emp.status }}</option>
+                                <select v-model="data.type" class="form-input border border-gray-300 rounded text-black py-2 px-3 w-full"> <br><br>
+                                    <option v-for="emp in emp_status" :value="emp.status">{{ emp.status }}</option>
                                 </select>
                             </div>
                             <div class="p-0 m-0">
@@ -149,6 +149,7 @@ export default {
     mounted(){
         this.getEmpStatus();
         this.opp = this.data;
+        console.log(this.data)
     },
 
     computed: {
