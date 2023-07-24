@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\EmpStatusController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\PortfolioController;
+
 // use App\Models\User;
 
 /*
@@ -47,6 +49,8 @@ Route::post('/register', [UserController::class, 'register']);
 // ?????
 Route::post('/getApplicant', [UserController::class, 'getApplicant']);
 
+
+// this just means if nakapag log in na si user
 Route::prefix('my')->group(function () {
 
     //
@@ -57,6 +61,19 @@ Route::prefix('my')->group(function () {
     Route::post('/getApplicant', [UserController::class, 'getApplicant']);
     Route::post('my/getApplicant', [UserController::class, 'getApplicant']);
     
+
+    
+    // when portfolio related things
+    Route::post('/updBasicInf', [PortfolioController::class, 'updateUserForm']);
+    Route::post('/addEdu', [PortfolioController::class, 'addUserEducattion']);
+    Route::post('/addExp', [PortfolioController::class, 'addUserExp']);
+    Route::post('/addEli', [PortfolioController::class, 'addUserEli']);
+    Route::post('/addTrain', [PortfolioController::class, 'addUserTrain']);
+    
+
+    Route::post('/getUserAdress', [PortfolioController::class, 'getAddress']);
+    Route::post('/getEmpStatus', [EmpStatusController::class, 'getEmpStatus']);
+
 
     Route::get('/{vue_route?}', [UserController::class, 'dashboard'])->where('vue_route', '[\/\w\.-]*');
 });

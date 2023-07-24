@@ -11,6 +11,7 @@ class Applicant_Detail extends Model
     use HasFactory;
 
     protected $table = "applicant_details";
+    protected $hidden = ['password'];
 
     public function user(){
         return $this->hasOne(User::class);

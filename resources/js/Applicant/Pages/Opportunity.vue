@@ -1,8 +1,5 @@
 <template lang="">
     <div>
-        <div class="p-5 mx-auto w-4/5">
-            <a @click="$router.go(-1)" class="btn">Back to Opportunities</a>
-        </div>
         <div class="border border-accent bg-white p-5 rounded-lg shadow-lg mb-3 w-9/12 mx-auto">
             <h1 class="font-bold text-center">{{ userOpp.title }}</h1>
             <hr class="my-4 border-secondary">
@@ -43,10 +40,13 @@
                     -->
                     
                 </div>
-                <div class="w-full grid pt-4">
-                    <div class="place-self-end">
-                        <button @click="initiateDocReq" class="btn btn-primary">Apply</button>
-                    </div>
+            </div>
+            <div class="w-full grid pt-4">
+                <div class="place-self-end">
+                    <button @click="$router.go(-1)" class="btn btn-primary">Cancel</button>
+                    &ensp;
+                    <button @click="initiateDocReq" class="btn btn-primary">Apply</button>
+                    
                 </div>
             </div>
         </div>

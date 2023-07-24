@@ -82,10 +82,15 @@ class UserController extends Controller
     public function getApplicant()
     {
         
-        return DB::table('users')
-                    ->where("users.id", Auth::id())
-                    ->join('applicant_details', 'users.id', '=', 'applicant_details.user_id')
-                    ->first();
+        $userApplicant= DB::table('users')
+                        ->where("users.id", Auth::id())
+                        ->join('applicant_details', 'users.id', '=', 'applicant_details.user_id')
+                        ->first();
+
+        // remove the exposed password 07/21/2023 (partial fix??)
+        $userApplicant->password = "";
+
+        return $userApplicant;
     }
 
     public function logout(Request $request)

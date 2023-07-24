@@ -56,7 +56,9 @@
         </div>
         <div class="w-full grid pt-4">
             <div class="place-self-end">
+                <a href="/" class="btn btn-primary">Cancel</a>
                 <a href="/login" class="btn btn-primary">Apply</a>
+                
             </div>
         </div>
     </div>
