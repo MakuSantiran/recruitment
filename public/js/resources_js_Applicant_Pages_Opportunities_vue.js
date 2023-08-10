@@ -65,6 +65,16 @@ __webpack_require__.r(__webpack_exports__);
         _this2.opps = data;
         _this2.userSearched = true;
       });
+    },
+    // I have to improvise based on my current knowledge ~MakuSan
+    compareDate: function compareDate(date) {
+      var subdate = date;
+      var today = new Date();
+      var deadline = new Date(subdate); //console.log(date)
+
+      console.log(subdate); // uhhhh HAAHHA
+
+      return today < deadline;
     }
   }
 });
@@ -180,6 +190,7 @@ var _hoisted_24 = {
   "class": "justify-center items-center w-full"
 };
 var _hoisted_25 = {
+  key: 0,
   "class": "border bg-white p-5 rounded-lg shadow-lg my-3 border-accent"
 };
 var _hoisted_26 = {
@@ -240,6 +251,67 @@ var _hoisted_39 = {
 
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Details");
 
+var _hoisted_41 = {
+  "class": "border bg-white p-5 rounded-lg shadow-lg my-3 border-brightred"
+};
+var _hoisted_42 = {
+  "class": "font-semibold"
+};
+
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Position: ", -1
+/* HOISTED */
+);
+
+var _hoisted_44 = {
+  "class": "text-lg"
+};
+
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Type: ", -1
+/* HOISTED */
+);
+
+var _hoisted_48 = {
+  "class": "text-lg"
+};
+
+var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)();
+
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "text-lg font-semibold"
+}, "Deadline of Submissions: ", -1
+/* HOISTED */
+);
+
+var _hoisted_53 = {
+  "class": "text-lg"
+};
+var _hoisted_54 = {
+  "class": "w-full grid pt-4"
+};
+var _hoisted_55 = {
+  "class": "place-self-end"
+};
+
+var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Details");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
@@ -281,7 +353,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, "Filtered by " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.oldSearch.filter), 1
   /* TEXT */
   )])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, _hoisted_21)), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.opps, function (opp) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.title), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" there is probably a better way to do this ~MakuSan"), $options.compareDate(opp.submission_deadline) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.title), 1
     /* TEXT */
     ), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.position), 1
     /* TEXT */
@@ -293,7 +365,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       to: {
         name: 'Opportunity',
         params: {
-          slug: opp.slug,
+          id: opp.id,
           opp: JSON.stringify(opp),
           applicant: _this.applicant
         }
@@ -308,7 +380,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
-    , ["to"])])])])]);
+    , ["to"])])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      key: 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("There could be a better way to do this"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.title), 1
+    /* TEXT */
+    ), _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.position), 1
+    /* TEXT */
+    ), _hoisted_45, _hoisted_46, _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.type), 1
+    /* TEXT */
+    ), _hoisted_49, _hoisted_50, _hoisted_51, _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(opp.submission_deadline), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+      to: {
+        name: 'Opportunity',
+        params: {
+          id: opp.id,
+          opp: JSON.stringify(opp),
+          applicant: _this.applicant
+        }
+      },
+      "class": "btn btn-primary"
+    }, {
+      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+        return [_hoisted_56];
+      }),
+      _: 2
+      /* DYNAMIC */
+
+    }, 1032
+    /* PROPS, DYNAMIC_SLOTS */
+    , ["to"])])])])], 2112
+    /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+    ))]);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))])])]);

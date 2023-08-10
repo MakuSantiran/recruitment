@@ -42,7 +42,9 @@
             <hr class="my-4 border-secondary">
             <div class="grid gap-x-4 grid-cols-1 md:grid-cols-3">
                 <div class="justify-center items-center w-full" v-for="opp in this.opps">
-                    <div class="border bg-white p-5 rounded-lg shadow-lg my-3 border-accent">
+
+                    <!-- there is probably a better way to do this ~MakuSan-->
+                    <div v-if="compareDate(opp.submission_deadline)" class="border bg-white p-5 rounded-lg shadow-lg my-3 border-accent">
                         <h2 class="font-semibold">{{ opp.title }}</h2>
                         <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ opp.position }}</span> <br>
                         <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ opp.type }}</span> <br><br/>
@@ -51,10 +53,26 @@
                         <div class="text-lg">&emsp;{{ opp.submission_deadline }}</div>
                         <div class="w-full grid pt-4">
                             <div class="place-self-end">
-                                <router-link :to="{ name: 'Opportunity', params: { slug: opp.slug, opp: JSON.stringify(opp), applicant: this.applicant } }" class="btn btn-primary">Details</router-link>
+                                <router-link :to="{ name: 'Opportunity', params: { id: opp.id, opp: JSON.stringify(opp), applicant: this.applicant } }" class="btn btn-primary">Details</router-link>
                             </div>
                         </div>
                     </div>
+
+                    <!--There could be a better way to do this-->
+                    <div v-else class="border bg-white p-5 rounded-lg shadow-lg my-3 border-brightred">
+                        <h2 class="font-semibold">{{ opp.title }}</h2>
+                        <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ opp.position }}</span> <br>
+                        <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ opp.type }}</span> <br><br/>
+
+                        <span class="text-lg font-semibold">Deadline of Submissions: </span>
+                        <div class="text-lg">&emsp;{{ opp.submission_deadline }}</div>
+                        <div class="w-full grid pt-4">
+                            <div class="place-self-end">
+                                <router-link :to="{ name: 'Opportunity', params: { id: opp.id, opp: JSON.stringify(opp), applicant: this.applicant } }" class="btn btn-primary">Details</router-link>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -121,6 +139,19 @@ export default {
             });
         },
 
+        // I have to improvise based on my current knowledge ~MakuSan
+        compareDate(date){
+            var subdate = date
+
+            var today = new Date();
+            var deadline = new Date(subdate) 
+            
+            //console.log(date)
+            console.log(subdate)
+
+            // uhhhh HAAHHA
+            return today < deadline
+        }
     }
 }
 </script>

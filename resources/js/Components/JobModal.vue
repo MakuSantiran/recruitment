@@ -21,7 +21,8 @@
                         <li v-for="req in required">{{ req }}</li>
                     </div> <br>
 
-                    <div class="text-lg font-semibold">Optional Documents:</div>
+                <div class="text-lg font-semibold">Optional Documents:</div>
+
                     <div class="px-5">
                         <li v-for="opt in optional">{{ opt }}</li>
                     </div> <br>

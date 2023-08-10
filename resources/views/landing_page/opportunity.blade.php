@@ -13,7 +13,11 @@
 @endsection
 
 @section('content')
-    <div class="border border-accent bg-white p-5 rounded-lg shadow-lg mt-10 mb-3 w-9/12 mx-auto">
+    @if(date("Y-m-d") < $opportunity->submission_deadline)
+        <div class="border border-accent bg-white p-5 rounded-lg shadow-lg mt-10 mb-3 w-9/12 mx-auto">
+    @else
+    <div class="border border-brightred bg-white p-5 rounded-lg shadow-lg mt-10 mb-3 w-9/12 mx-auto">
+    @endif
         <h1 class="font-bold text-center">{{ $opportunity->title }}</h1>
         <hr class="my-4 border-secondary">
         <div class="px-4 grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -53,14 +57,35 @@
                 <span class="text-lg font-semibold">Deadline of Submissions: </span>
                 <span class="text-lg">{{ date("D, F d, Y h:i a", strtotime($opportunity->submission_deadline)) }}</span> <br>
             <div>
+            @if(date("Y-m-d") > $opportunity->submission_deadline)
+            <br/><br/>
+                <center class="font-bold"> (You cannot apply to this opportunity anymore) </center>
+            @endif
         </div>
         <div class="w-full grid pt-4">
             <div class="place-self-end">
                 <a href="/" class="btn btn-primary">Cancel</a>
-                <a href="/login" class="btn btn-primary">Apply</a>
-                
+
+                @if(date("Y-m-d") < $opportunity->submission_deadline)
+                    <a href="/login/redirect={{$opportunity->id}}" class="btn btn-primary">Apply</a>
+                @else
+
+                @endif
             </div>
         </div>
     </div>
 
+
+    <script>
+
+    /*
+    console.log({{$opportunity->id}});
+    $.post( "/login", function( data ) {
+    });
+
+    ~Maku: I'll just think about this
+
+    */
+
+    </script>
 @endsection

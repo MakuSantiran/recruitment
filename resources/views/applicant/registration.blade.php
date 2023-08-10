@@ -6,6 +6,8 @@
 
 @section('content')
     <div id="app">
-        <registration></registration>
+        <registration :opId="{{$opId}}"></registration>
     </div>
+
+
 @endsection

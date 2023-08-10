@@ -5,10 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EmpStatus extends Model
+class PendingApplication extends Model
 {
     use HasFactory;
-
-    protected $connection = 'pisDB'; //(Maku: idk what pisDB means)
-    protected $table = "emp_status";
+    protected $table = "pending_applications";
 }

@@ -47,6 +47,7 @@ module.exports = {
             'secondary': '#ffcd00',
             'tertiary': '#de1900',
             'maroon': '#800000',
+            'brightred': '#ff2f2f',
             'default': '#002afc',
         })
     },

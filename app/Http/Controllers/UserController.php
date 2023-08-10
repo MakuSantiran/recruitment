@@ -23,6 +23,12 @@ class UserController extends Controller
         ]);
     }
 
+
+    public function logWithOpId($opId)
+    {
+        print $opId;
+    }
+
     public function dashboard()
     {
         return view('applicant.my');
@@ -70,13 +76,19 @@ class UserController extends Controller
         }
     }
 
-    public function login(UserLoginRequest $request)
+    public function login(UserLoginRequest $request, $opId = -1)
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect('my');
+        // if they try to login while going to opportunity
+        if ($opId > -1){
+            return redirect('my/opportunity/id/'.$opId);
+        } else {
+            return redirect('my');
+        }
+        
     }
 
     public function getApplicant()

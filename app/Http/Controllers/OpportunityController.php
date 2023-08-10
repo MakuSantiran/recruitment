@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Opportunity;
+use App\Models\PendingApplication;
+use App\Models\Uploaded_Documents;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Exception;
 
 class OpportunityController extends Controller
 {
@@ -14,10 +18,11 @@ class OpportunityController extends Controller
     {
         $this->middleware('auth:admin')->except([
             'getAll',
-            'displaySearched'
+            'displaySearched',
+            'getOpp',
+            'withdrawApplication'
         ]);
     }
-
 
     public function publish(Request $request)
     {
@@ -60,8 +65,13 @@ class OpportunityController extends Controller
     public function getAll()
     {
         $result = Opportunity::all();
-        
         return $result;
+    }
+
+    public function getOpp(Request $request, $id)
+    {
+        $result = Opportunity::where('id', $id)->get()->first();
+        print $result;
     }
 
     public function displaySearched(Request $request)
@@ -111,8 +121,43 @@ class OpportunityController extends Controller
     
     }
 
+    // Reference : https://stackoverflow.com/questions/7288029
+    function rmdir_recursive($dir) {
+        foreach(scandir($dir) as $file) {
+            if ('.' === $file || '..' === $file) continue;
+            if (is_dir("$dir/$file")){
+                $this->rmdir_recursive("$dir/$file");
+            } else {
+                unlink("$dir/$file");
+            }
+        }
+        rmdir($dir);
+    }
+
     public function deleteOpportunity($id)
     {
+        // first delete the pending applications
+        $pendingAll = PendingApplication::where("opp_id", $id)->delete();
+
+        // then delete the stored uploaded file
+        $allFileDel = Uploaded_Documents::where("opp_id", $id);
+        $allFile = Uploaded_Documents::where("opp_id", $id)->get();
+
+        // scan each value
+        foreach($allFile as $key=>$value) {
+            $directoryCode = $value['user_id']."_".$value['opp_id'];
+            $fullDir = "userUploads/".$directoryCode;
+
+            try{
+                $this->rmdir_recursive($fullDir);
+            } catch(Exception $mes) {
+            }
+        }
+
+        // and delete the uploaded file in the database
+        $allFileDel->delete();
+
+        // then finally delete the opportunity  
         $result = Opportunity::where("id", $id)->delete();
 
         return $result;
@@ -123,5 +168,36 @@ class OpportunityController extends Controller
         return view('app');
     }
         
+    public function withdrawApplication(Request $request)
+    {
+        echo $request->compiledData['userId'];
+        echo $request->compiledData['oppId'];
+
+
+        /*
+        // first delete the pending applications
+        $pendingAll = PendingApplication::where("opp_id", $id)->delete();
+
+        // then delete the stored uploaded file
+        $allFileDel = Uploaded_Documents::where("opp_id", $id);
+        $allFile = Uploaded_Documents::where("opp_id", $id)->get();
+
+        // scan each value
+        foreach($allFile as $key=>$value) {
+            $directoryCode = $value['user_id']."_".$value['opp_id'];
+            $fullDir = "userUploads/".$directoryCode;
+
+            try{
+                $this->rmdir_recursive($fullDir);
+            } catch(Exception $mes) {
+            }
+        }
+
+        // and delete the uploaded file in the database
+        $allFileDel->delete();
+        */
+
+    }
+
     
 }

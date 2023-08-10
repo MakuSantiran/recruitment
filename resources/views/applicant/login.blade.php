@@ -28,9 +28,9 @@
                     </div>
                 </div>
                 <div class="border border-gray-100 bg-white p-5 pb-2 rounded-lg shadow-md mt-3">
-                    <h5>APPLICANT ACCOUNT LOGIN</h5>
+                    <h5>APPLICANT ACCOUNT LOGIN </h5>
                     <div class="p-1 px-4">
-                        <form method="POST" action="/login">
+                        <form method="POST" action="/login/{{$opId}}">
                             @csrf
 
                             <div class="w-full"><label for="email">Email</label>
@@ -48,9 +48,15 @@
                                 <div class="place-self-center"><button class="btn btn-primary" type="submit">Login</button></div>
                             </div>
                             <div class="w-full grid mt-2">
-                                <div class="place-self-center"><a class="italic text-sm" href="/registration">
-                                    No Account? Register Here
-                                </a></div>
+                                @if($opId > -1)
+                                    <div class="place-self-center"><a class="italic text-sm" href="/registration/redirect={{$opId}}">
+                                        No Account? Register Here
+                                    </a></div>
+                                @else
+                                    <div class="place-self-center"><a class="italic text-sm" href="/registration">
+                                        No Account? Register Here
+                                    </a></div>
+                                @endif
                             </div>
                         </form>
                     </div>

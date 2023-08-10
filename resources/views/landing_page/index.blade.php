@@ -38,7 +38,21 @@
             
             @foreach ($opportunities as $opp)
                 <div class="justify-center items-center w-full">
-                    <div class="border bg-white p-5 rounded-lg shadow-lg mt-3 mb-6 border-accent">
+
+                    <?php
+                        // gotta clean this up soon ~MakuSan
+                        //echo date("Y-m-d");
+                        //echo '<br/>';
+                        //echo $opp->submission_deadline;
+                    ?>
+
+                    @if(date("Y-m-d") < $opp->submission_deadline)
+                        <div class="border bg-white p-5 rounded-lg shadow-lg mt-3 mb-6 border-accent">
+                    @else
+                        <div class="border bg-white p-5 rounded-lg shadow-lg mt-3 mb-6 border-brightred">
+                    @endif
+
+                    
                         <h2 class="font-semibold">{{ $opp->title }}</h2>
                         <span class="text-lg font-semibold">Position: </span><span class="text-lg">{{ $opp->position }}</span> <br>
                         <span class="text-lg font-semibold">Type: </span><span class="text-lg">{{ $opp->type }}</span> <br> <br/>
@@ -51,7 +65,7 @@
                         <div class="text-lg">&emsp;{{ date("M d, Y h:i a", strtotime($opp->created_at)) }}</div>
                         <div class="w-full grid">
                             <div class="place-self-end">
-                                <a href="{{ route('opportunity', $opp->slug) }}" class="btn btn-primary">Details</a>
+                                <a href="{{ route('opportunity', $opp->id) }}" class="btn btn-primary">Details</a>
                             </div>
                         </div>
                     </div>

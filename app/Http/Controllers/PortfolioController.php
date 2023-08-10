@@ -138,6 +138,31 @@ class PortfolioController extends Controller
         $newTraining->save();
     }
 
+    // For Admin // For Admin // For Admin // For Admin // For Admin // For Admin // For Admin //
+    public function getApplicantDetails(Request $request)
+    {
+        return Applicant_Detail::where('user_id', $request->userId)->get()->first();
+    }
 
+    public function getEducationDetails(Request $request)
+    {
+        return Education::where('user_id', $request->userId)->get();
+    }
+
+    public function getWorkExperience(Request $request)
+    {
+        return WorkExperience::where('user_id', $request->userId)->get();
+    }
+
+    public function getEligibility(Request $request)
+    {
+        return Eligibility::where('user_id', $request->userId)->get();
+    }   
+
+    public function getTraining(Request $request)
+    {
+        return Training::where('user_id', $request->userId)->get();
+    }   
+    
 
 }

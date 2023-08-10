@@ -38,12 +38,7 @@ export default {
 
     methods:{
         getApplicant(){
-
-            // simple fix but it gives an error
-            axios.post('my/getApplicant').then(({data}) => {
-                this.applicant = data;
-            });
-            axios.post('getApplicant').then(({data}) => {
+            axios.post('/getApplicant').then(({data}) => {
                 this.applicant = data;
             });
         }

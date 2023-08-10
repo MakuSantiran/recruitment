@@ -30,9 +30,9 @@ class LandingPageController extends Controller
         return view('landing_page.search', compact('opportunities', 'searched'));
     }
 
-    public function showOpp($slug)
+    public function showOpp($id)
     {
-        $opportunity = Opportunity::where('slug', $slug)->first();
+        $opportunity = Opportunity::where('id', $id)->first();
 
         $documents = [
             'cert_employment' => [

@@ -19759,13 +19759,8 @@ __webpack_require__.r(__webpack_exports__);
     getApplicant: function getApplicant() {
       var _this = this;
 
-      // simple fix but it gives an error
-      axios.post('my/getApplicant').then(function (_ref) {
+      axios.post('/getApplicant').then(function (_ref) {
         var data = _ref.data;
-        _this.applicant = data;
-      });
-      axios.post('getApplicant').then(function (_ref2) {
-        var data = _ref2.data;
         _this.applicant = data;
       });
     }
@@ -19810,8 +19805,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['opid'],
+  setup: function setup(props) {// setup() receives props as the first argument.
+  },
+  watch: {},
+  mounted: function mounted() {
+    console.log("The Op Id is " + this.opid);
+  },
   data: function data() {
     return {
+      //opId: "",
       regInfo: {
         username: '',
         email: '',
@@ -19833,12 +19836,17 @@ __webpack_require__.r(__webpack_exports__);
     register: function register() {
       var _this = this;
 
-      axios.post('register', this.regInfo).then(function (_ref) {
+      axios.post('/register', this.regInfo).then(function (_ref) {
         var data = _ref.data;
 
         if (data.success) {
           alert("Registration Success");
-          window.location.href = '/my';
+
+          if (_this.opid > 0) {
+            window.location.href = '/my/opportunity/id/' + _this.opid;
+          } else {
+            window.location.href = '/my';
+          }
         } else {
           var errors = data.error;
 
@@ -20001,7 +20009,7 @@ var _hoisted_3 = {
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "text-center text-3xl font-bold"
-}, "Applicant Account Registration", -1
+}, "Applicant Account Registration ", -1
 /* HOISTED */
 );
 
@@ -20195,15 +20203,20 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_43 = {
   "class": "mt-5 w-full grid grid-cols-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+};
+var _hoisted_44 = {
+  key: 0,
   href: "/login",
   "class": "italic text-xs"
-}, "Already have an account? Click here to login"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+};
+var _hoisted_45 = ["href"];
+
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "place-self-end btn btn-primary"
-}, "Register")], -1
+}, "Register", -1
 /* HOISTED */
 );
 
@@ -20324,7 +20337,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.regInfo.contact_no]])])]), _hoisted_43])], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.regInfo.contact_no]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [this.opid === -1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", _hoisted_44, "Already have an account? Click here to login")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+    key: 1,
+    href: '/login/redirect=' + this.opid,
+    "class": "italic text-xs"
+  }, "Already have an account? Click here to login", 8
+  /* PROPS */
+  , _hoisted_45)), _hoisted_46])])], 32
   /* HYDRATE_EVENTS */
   )])])])]);
 }
@@ -20353,11 +20372,12 @@ var routes = [{
     }
   }, {
     path: 'opportunities',
+    name: 'Opportunities',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_Applicant_Pages_Opportunities_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../Pages/Opportunities.vue */ "./resources/js/Applicant/Pages/Opportunities.vue"));
     }
   }, {
-    path: 'opportunity/:slug',
+    path: 'opportunity/id/:id',
     name: 'Opportunity',
     props: true,
     component: function component() {

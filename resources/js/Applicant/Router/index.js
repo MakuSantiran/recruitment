@@ -11,10 +11,11 @@ const routes = [
          },
          {
             path: 'opportunities',
+            name: 'Opportunities',
             component: () => import ('../Pages/Opportunities.vue'),
          },
          {
-            path: 'opportunity/:slug',
+            path: 'opportunity/id/:id',
             name: 'Opportunity',
             props: true,
             component: () => import ('../Pages/Opportunity.vue'),

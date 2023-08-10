@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <div class="flex justify-center items-center">
                 <div class="border border-gray-100 bg-white px-10 py-5 rounded-lg shadow-md my-10 w-5/6">
-                    <h1 class="text-center text-3xl font-bold">Applicant Account Registration</h1>
+                    <h1 class="text-center text-3xl font-bold">Applicant Account Registration </h1>
                     <form class="justify-center" @submit.prevent="register">
                         <div>
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4 border border-gray-100 bg-white px-10 py-5 rounded-lg shadow-md mt-10">
@@ -86,7 +86,8 @@
                                 </div>
                             </div>
                             <div class="mt-5 w-full grid grid-cols-2">
-                                <a href="/login" class="italic text-xs">Already have an account? Click here to login</a>
+                                <a v-if="this.opid === -1" href="/login" class="italic text-xs">Already have an account? Click here to login</a>
+                                <a v-else :href="'/login/redirect='+this.opid" class="italic text-xs">Already have an account? Click here to login</a>
                                 <button type="submit" class="place-self-end btn btn-primary">Register</button>
                             </div>
                         </div>
@@ -97,10 +98,27 @@
     </div>
 </template>
 
+
 <script>
 export default {
+    props: ['opid'],
+
+    setup(props) {
+        // setup() receives props as the first argument.
+        
+    },
+
+    watch:{ 
+    },
+
+    mounted(){
+        console.log("The Op Id is "+this.opid);
+    },  
+
     data(){
         return{
+            //opId: "",
+
             regInfo:{
                 username: '',
                 email: '',
@@ -122,10 +140,17 @@ export default {
 
     methods:{
         register(){
-            axios.post('register', this.regInfo).then(({data})=>{               
+            axios.post('/register', this.regInfo).then(({data})=>{               
                 if (data.success) {
                     alert("Registration Success")
-                    window.location.href = '/my'
+
+                    if (this.opid > 0) {
+                        window.location.href = '/my/opportunity/id/'+this.opid
+                    }else{
+                        window.location.href = '/my'
+                    }
+
+
                 } else {
                     var errors = data.error
                     for (var key in errors) {

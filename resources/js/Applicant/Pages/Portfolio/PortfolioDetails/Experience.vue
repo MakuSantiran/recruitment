@@ -45,10 +45,12 @@
         <div class="col-start-1 col-span-2 ">
             <button type="button" @click="addExp" class="btn bg-blue-600 text-white text-center border border-blue-300 hover:bg-blue-500">Add New Work Experience</button>
         </div>
+        <!--
+            <div class="col-start-1 col-span-2 mt-2">
+                <button class="btn bg-gray-500 text-right hover:bg-gray-400">Cancel</button>
+            </div>
+        -->
 
-        <div class="col-start-1 col-span-2 mt-2">
-            <button class="btn bg-gray-500 text-right hover:bg-gray-400">Cancel</button>
-        </div>
     </div>
 </template>
 
